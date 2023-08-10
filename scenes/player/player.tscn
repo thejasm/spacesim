@@ -1,10 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://be4t3ofxvgtgy"]
+[gd_scene load_steps=4 format=3 uid="uid://be4t3ofxvgtgy"]
 
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0yped"]
 [ext_resource type="Texture2D" uid="uid://o6q0wocq4hwh" path="res://icon.svg" id="1_6hbx7"]
+[ext_resource type="Script" path="res://scenes/player/PlayerController.gd" id="3_ra2xq"]
 
 [node name="Player" type="Node2D"]
+position = Vector2(558, 278)
+script = ExtResource("1_0yped")
 
 [node name="playerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_6hbx7")
 
 [node name="laserSprite" type="Sprite2D" parent="playerSprite"]
+
+[node name="PlayerController" type="Node2D" parent="."]
+script = ExtResource("3_ra2xq")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerController"]
+visible = false
+rotation = 0.785398
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_6hbx7")
