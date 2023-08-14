@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 var charSpeed = 300
 
@@ -9,6 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-		var target = get_node("PlayerController").global_position
-		position = position.move_toward(target, charSpeed * delta)
+		var target = (get_node("PlayerController").global_position - global_position).normalized()
+		velocity = target * charSpeed
+		move_and_slide()
 	
