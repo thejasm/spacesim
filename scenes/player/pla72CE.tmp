@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://be4t3ofxvgtgy"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0yped"]
+[ext_resource type="Texture2D" uid="uid://o6q0wocq4hwh" path="res://icon.svg" id="1_6hbx7"]
+[ext_resource type="Script" path="res://scenes/player/playerSprite.gd" id="3_ppaac"]
+[ext_resource type="Script" path="res://scenes/player/PlayerController.gd" id="3_ra2xq"]
+[ext_resource type="Script" path="res://scenes/player/MouseController.gd" id="4_t1yf1"]
+[ext_resource type="Texture2D" uid="uid://d3w0l1f5i15h2" path="res://Sprites/cursor.png" id="5_3lbh2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvukf"]
+radius = 63.561
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0yped")
+
+[node name="playerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_6hbx7")
+script = ExtResource("3_ppaac")
+
+[node name="PlayerController" type="Node2D" parent="."]
+script = ExtResource("3_ra2xq")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerController"]
+visible = false
+rotation = 0.785398
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_6hbx7")
+
+[node name="MouseController" type="Node2D" parent="."]
+script = ExtResource("4_t1yf1")
+
+[node name="Cursor" type="Sprite2D" parent="MouseController"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_3lbh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tvukf")
