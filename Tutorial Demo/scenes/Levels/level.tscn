@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://g5sartnrhvgk"]
+
+[ext_resource type="PackedScene" uid="uid://bklvyu57ao03q" path="res://scenes/Player/player.tscn" id="1_prjlu"]
+[ext_resource type="Script" path="res://scenes/Levels/level.gd" id="1_q27tr"]
+[ext_resource type="PackedScene" uid="uid://dede6033tapxj" path="res://scenes/Objects/bed.tscn" id="2_fnisw"]
+[ext_resource type="PackedScene" uid="uid://deyxuccd57qdk" path="res://scenes/Objects/box.tscn" id="3_y0vjd"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_q27tr")
+
+[node name="Player" parent="." instance=ExtResource("1_prjlu")]
+position = Vector2(426, 282)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Bed" parent="Objects" instance=ExtResource("2_fnisw")]
+position = Vector2(880, 67)
+
+[node name="StaticBody2D" parent="Objects" instance=ExtResource("3_y0vjd")]
+position = Vector2(136, 549)
+rotation = 0.598648
+scale = Vector2(0.7, 0.7)
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[connection signal="firing" from="Player" to="." method="_on_player_firing"]
+[connection signal="throw_grenade" from="Player" to="." method="_on_player_throw_grenade"]

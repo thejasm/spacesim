@@ -1,29 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://be4t3ofxvgtgy"]
+[gd_scene load_steps=13 format=3 uid="uid://be4t3ofxvgtgy"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0yped"]
-[ext_resource type="Texture2D" uid="uid://o6q0wocq4hwh" path="res://icon.svg" id="1_6hbx7"]
-[ext_resource type="Script" path="res://scenes/player/playerSprite.gd" id="3_ppaac"]
-[ext_resource type="Script" path="res://scenes/player/PlayerController.gd" id="3_ra2xq"]
+[ext_resource type="PackedScene" uid="uid://j3t354yrp5ex" path="res://scenes/player/bullet.tscn" id="2_8anyt"]
 [ext_resource type="Script" path="res://scenes/player/MouseController.gd" id="4_t1yf1"]
+[ext_resource type="Script" path="res://scenes/player/CharacterCam.gd" id="5_2k5ov"]
 [ext_resource type="Texture2D" uid="uid://d3w0l1f5i15h2" path="res://Sprites/cursor.png" id="5_3lbh2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvukf"]
 radius = 63.561
 
+[sub_resource type="SphereMesh" id="SphereMesh_34gy8"]
+
+[sub_resource type="Gradient" id="Gradient_ggd4t"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hcs6g"]
+gradient = SubResource("Gradient_ggd4t")
+width = 401
+
+[sub_resource type="BoxMesh" id="BoxMesh_hr2el"]
+
+[sub_resource type="Gradient" id="Gradient_2t7vj"]
+offsets = PackedFloat32Array(0.670659, 0.748503)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rxqhe"]
+gradient = SubResource("Gradient_2t7vj")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_0yped")
+charSpeed = 600
+Bullet = ExtResource("2_8anyt")
 
-[node name="playerSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_6hbx7")
-script = ExtResource("3_ppaac")
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_tvukf")
 
-[node name="PlayerController" type="Node2D" parent="."]
-script = ExtResource("3_ra2xq")
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerController"]
-rotation = 0.785398
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_6hbx7")
+[node name="PlayerMesh" type="MeshInstance2D" parent="."]
+position = Vector2(0.520952, 0.12501)
+scale = Vector2(129.104, 127.75)
+mesh = SubResource("SphereMesh_34gy8")
+texture = SubResource("GradientTexture1D_hcs6g")
 
 [node name="MouseController" type="Node2D" parent="."]
 script = ExtResource("4_t1yf1")
@@ -32,5 +48,17 @@ script = ExtResource("4_t1yf1")
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_3lbh2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_tvukf")
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="GunMesh" type="MeshInstance2D" parent="Gun"]
+position = Vector2(65, 36)
+scale = Vector2(112.5, 17.25)
+mesh = SubResource("BoxMesh_hr2el")
+texture = SubResource("GradientTexture1D_rxqhe")
+
+[node name="BulletSpawner" type="Marker2D" parent="Gun"]
+position = Vector2(113, 37)
+
+[node name="CharacterCam" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("5_2k5ov")

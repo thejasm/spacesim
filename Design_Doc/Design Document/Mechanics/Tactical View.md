@@ -1,0 +1,2 @@
+Tactical View shows a graphical representation of the ship as well as controls for different functions and aspects of the ship.
+From here, players can control things like maintanence, repair, fire suppression, crew management, and power management.

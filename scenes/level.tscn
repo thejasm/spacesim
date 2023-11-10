@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://crjjwwvyhjqwy"]
+[gd_scene load_steps=4 format=3 uid="uid://crjjwwvyhjqwy"]
 
+[ext_resource type="Texture2D" uid="uid://d4eaue63t5glw" path="res://Design_Doc/Design Document/Image Board/1k86gaavbxi51.jpg" id="1_0kxui"]
 [ext_resource type="PackedScene" uid="uid://be4t3ofxvgtgy" path="res://scenes/player/player.tscn" id="1_btmmp"]
+[ext_resource type="PackedScene" uid="uid://j3t354yrp5ex" path="res://scenes/player/bullet.tscn" id="2_b5rme"]
 
 [node name="Level" type="Node2D"]
 
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Map"]
+scale = Vector2(4.3, 4.3)
+texture = ExtResource("1_0kxui")
+
 [node name="Player" parent="." instance=ExtResource("1_btmmp")]
-position = Vector2(492, 277)
+position = Vector2(-4509, -684)
+
+[node name="Bullet" parent="." instance=ExtResource("2_b5rme")]
+position = Vector2(279, 122)
+scale = Vector2(10, 10)

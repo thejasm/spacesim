@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://j3t354yrp5ex"]
+
+[ext_resource type="Script" path="res://scenes/player/bullet.gd" id="1_q78ft"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fy6ar"]
+
+[sub_resource type="Gradient" id="Gradient_uqvfd"]
+colors = PackedColorArray(0.844867, 0.844867, 7.70092e-07, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8unws"]
+gradient = SubResource("Gradient_uqvfd")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qny53"]
+size = Vector2(20, 10)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_q78ft")
+
+[node name="BulletMesh" type="MeshInstance2D" parent="."]
+rotation = 1.5708
+scale = Vector2(10, 10)
+mesh = SubResource("CapsuleMesh_fy6ar")
+texture = SubResource("GradientTexture2D_8unws")
+
+[node name="BulletCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qny53")

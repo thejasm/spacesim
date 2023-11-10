@@ -1,23 +1,23 @@
 {
   "main": {
-    "id": "ce65dfb8dbb5dfef",
+    "id": "273a07c05bbce89f",
     "type": "split",
     "children": [
       {
-        "id": "04e0e0493ea02930",
+        "id": "c26a8d9b4dd046a1",
         "type": "tabs",
         "children": [
           {
-            "id": "c43821ac88329625",
+            "id": "8b23a61120ac5ec3",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "Mind Map.canvas",
                 "viewState": {
-                  "x": 865.65001757053,
-                  "y": 311.03974217118866,
-                  "zoom": -1.228210408958656
+                  "x": 1551.8287231507977,
+                  "y": 925.8502963645157,
+                  "zoom": 1
                 }
               }
             }
@@ -28,15 +28,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f5ac636006fc885c",
+    "id": "b1387cde7168fbeb",
     "type": "split",
     "children": [
       {
-        "id": "8e724f7f8581cf53",
+        "id": "cb5a34c7f9f3b18a",
         "type": "tabs",
         "children": [
           {
-            "id": "7cc720f728c79a4c",
+            "id": "7f52cc2e4c3a7681",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -46,7 +46,7 @@
             }
           },
           {
-            "id": "7dadea5a4c656830",
+            "id": "b0a09df898375b36",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +61,7 @@
             }
           },
           {
-            "id": "1acc3f63f2b730b1",
+            "id": "3ddfe24c3a81540b",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,15 +75,15 @@
     "width": 300
   },
   "right": {
-    "id": "aaaec2e282186d75",
+    "id": "5d554d371846c3c5",
     "type": "split",
     "children": [
       {
-        "id": "96b95b3c33f74cd8",
+        "id": "c6af244c3989d07f",
         "type": "tabs",
         "children": [
           {
-            "id": "8076358a3441e197",
+            "id": "5480e6e7343b13a5",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -94,13 +94,13 @@
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": true,
+                "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "5d52f0b41255feaa",
+            "id": "9b133e8f70511b0c",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -112,7 +112,7 @@
             }
           },
           {
-            "id": "489a86560b24f23e",
+            "id": "99e85e1c7214da15",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -123,7 +123,7 @@
             }
           },
           {
-            "id": "2e5235868a12aab6",
+            "id": "4aa74ac0aff8a23a",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -132,8 +132,7 @@
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -142,7 +141,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "companion:Toggle completion": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -151,26 +149,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c43821ac88329625",
+  "active": "8b23a61120ac5ec3",
   "lastOpenFiles": [
-    "Image Board/maxresdefault.jpg",
-    "Image Board/4tr9fcdf1m441.png",
-    "Image Board/1k86gaavbxi51.jpg",
-    "Mind Map.canvas",
-    "Image Board",
-    "New folder",
     "Space Sim Design Document.md",
-    "Space Sim Design Document 3.md/Yzr6WZ0DImKvAUbIiDtJ.png",
-    "Space Sim Design Document 3.md",
-    "Space Sim Design Document 2.md/AyZobcko05mDMW9qLAOc.png",
-    "Space Sim Design Document 2.md",
-    "Space Sim Design Document 1.md/mEPde64JYDhFlXCfa1wO.png",
-    "Space Sim Design Document 1.md",
-    "google.com.md",
-    "Space View.md",
-    "Character View.md",
-    "Untitled.canvas",
-    "Mechanics.md",
-    "Abstract.md"
+    "Image Board/Pasted image 20230826195849.png.import",
+    "Black Skylands Notes/Pasted image 20230826192302.png.import",
+    "Mind Map.canvas"
   ]
 }

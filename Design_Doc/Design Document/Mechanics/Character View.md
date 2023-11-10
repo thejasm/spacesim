@@ -1,0 +1,7 @@
+In the Character View, the player will be able to control the character using WASD and aim with the mouse, or use twinsticks with a controller.
+### Art Style
+This is a 2D pixel art style from a top down, or 2/3rds perspective. The art style will feature vibrant pixel art with intricate details, bringing the space ships, planets, and space stations to life. The characters will have smooth animations that highlight their movements and actions. The pixel art style will add a nostalgic and immersive feel to the game, while still being visually captivating as you explore the vastness of the universe.
+### Camera
+The camera is centered on the player, but if the player moves the cursor far away enough from the payer, the camera will drift in the direction of the mouse. With a controller, holding the right stick in a direction will drift the camera to that direction.
+### Locomotion
+The player will be able to freely explore the world using WASD or the left stick. The Player can walk around the inside of their ship using a 2D representation of the 3D ship interior. They also have the ability to board other ships, or land or space stations or planets. This is done seamlessly using a boarding ramp, umbilical, or landing ramp, etc. The Z axis movement is handled by different discreet "layers" 2D maps. So if the player is on Deck 1, only Deck 1 is shown, and when they enter and elevator or use a staircase, they can transition to Deck 2. Similar to how Pokemon handles it.

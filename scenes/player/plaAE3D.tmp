@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://be4t3ofxvgtgy"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_0yped"]
+[ext_resource type="PackedScene" uid="uid://j3t354yrp5ex" path="res://scenes/player/bullet.tscn" id="2_8anyt"]
+[ext_resource type="Script" path="res://scenes/player/MouseController.gd" id="4_t1yf1"]
+[ext_resource type="Texture2D" uid="uid://d3w0l1f5i15h2" path="res://Sprites/cursor.png" id="5_3lbh2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvukf"]
+radius = 63.561
+
+[sub_resource type="SphereMesh" id="SphereMesh_34gy8"]
+
+[sub_resource type="Gradient" id="Gradient_ggd4t"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hcs6g"]
+gradient = SubResource("Gradient_ggd4t")
+width = 401
+
+[sub_resource type="BoxMesh" id="BoxMesh_hr2el"]
+
+[sub_resource type="Gradient" id="Gradient_2t7vj"]
+offsets = PackedFloat32Array(0.670659, 0.748503)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rxqhe"]
+gradient = SubResource("Gradient_2t7vj")
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0yped")
+Bullet = ExtResource("2_8anyt")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_tvukf")
+
+[node name="PlayerMesh" type="MeshInstance2D" parent="."]
+position = Vector2(0.520952, 0.12501)
+scale = Vector2(129.104, 127.75)
+mesh = SubResource("SphereMesh_34gy8")
+texture = SubResource("GradientTexture1D_hcs6g")
+
+[node name="MouseController" type="Node2D" parent="."]
+script = ExtResource("4_t1yf1")
+
+[node name="Cursor" type="Sprite2D" parent="MouseController"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_3lbh2")
+
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="GunMesh" type="MeshInstance2D" parent="Gun"]
+position = Vector2(65, 36)
+scale = Vector2(112.5, 17.25)
+mesh = SubResource("BoxMesh_hr2el")
+texture = SubResource("GradientTexture1D_rxqhe")
+
+[node name="BulletSpawner" type="Marker2D" parent="Gun"]
+position = Vector2(113, 37)
+
+[node name="CharacterCam" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
