@@ -10,10 +10,12 @@ radius = 60.0083
 script = ExtResource("1_legjd")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(40, 3)
+rotation = 1.5708
 texture = ExtResource("1_45gm2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 38)
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_vds43")
 
 [node name="PrimaryFirerate" type="Timer" parent="."]
@@ -23,7 +25,7 @@ wait_time = 0.1
 wait_time = 2.0
 
 [node name="barrel" type="Marker2D" parent="."]
-position = Vector2(19, -90)
+position = Vector2(129, 22)
 
 [connection signal="timeout" from="PrimaryFirerate" to="." method="_on_primary_firerate_timeout"]
 [connection signal="timeout" from="SecondaryTimer" to="." method="_on_secondary_timer_timeout"]

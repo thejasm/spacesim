@@ -7,8 +7,8 @@ extends CharacterBody2D
 var can_primary = true
 var can_secondary = true
 
-signal firing(pos)
-signal throw_grenade(pos)
+signal firing(pos, dir)
+signal throw_grenade(pos, dir)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,16 +19,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# Input Movement
 	var direction = Input.get_vector("PlayerMoveLeft", "PlayerMoveRight", "PlayerMoveUp", "PlayerMoveDown")
 	velocity = direction * speed
 	move_and_slide()
 	
+	# Rotation look at mouse
+	look_at(get_global_mouse_position())
+	
+	# Primary and Secondary Action
+	var dir = (get_global_mouse_position() - position).normalized()
+	
 	if(can_primary == true && Input.is_action_pressed("PrimaryAction")):
-		firing.emit($barrel.global_position)
+		firing.emit($barrel.global_position, dir)
 		can_primary = false
 		$PrimaryFirerate.start()
+		
 	if(can_secondary == true && Input.is_action_pressed("Secondary Action")):
-		throw_grenade.emit(global_position)
+		throw_grenade.emit(global_position, dir)
 		can_secondary = false
 		$SecondaryTimer.start()
 
