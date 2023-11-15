@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bklvyu57ao03q"]
+
+[ext_resource type="Texture2D" uid="uid://2n5mfldwcme8" path="res://graphics/player/player.png" id="1_45gm2"]
+[ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_legjd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vds43"]
+radius = 60.0083
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_legjd")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(40, 3)
+rotation = 1.5708
+texture = ExtResource("1_45gm2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_vds43")
+
+[node name="PrimaryFirerate" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="SecondaryTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="barrel" type="Marker2D" parent="."]
+position = Vector2(129, 22)
+
+[connection signal="timeout" from="PrimaryFirerate" to="." method="_on_primary_firerate_timeout"]
+[connection signal="timeout" from="SecondaryTimer" to="." method="_on_secondary_timer_timeout"]

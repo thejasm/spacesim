@@ -29,12 +29,21 @@ func _process(delta):
 	look_at(get_global_mouse_position())
 	
 	# Primary and Secondary Action
-	var dir = (get_global_mouse_position() - position).normalized()
+	var dir = Vector2(cos(rotation), sin(rotation))
 	
 	if(can_primary == true && Input.is_action_pressed("PrimaryAction")):
 		firing.emit($barrel.global_position, dir)
 		can_primary = false
 		$PrimaryFirerate.start()
+		
+		$muzzleFlash.emitting = true
+		$muzzleFlash.one_shot = false
+		$muzzleFlash/PointLight2D.visible = true
+		$muzzleFlash/MuzzleFlashTimer.start()
+		
+	if(Input.is_action_just_released("PrimaryAction")): 
+		$muzzleFlash.one_shot = true
+		$muzzleFlash/PointLight2D.visible = false
 		
 	if(can_secondary == true && Input.is_action_pressed("Secondary Action")):
 		throw_grenade.emit(global_position, dir)
@@ -46,3 +55,6 @@ func _on_primary_firerate_timeout():
 	can_primary = true
 func _on_secondary_timer_timeout():
 	can_secondary = true
+
+func _on_muzzle_flash_timer_timeout():
+	$muzzleFlash/PointLight2D.visible = false

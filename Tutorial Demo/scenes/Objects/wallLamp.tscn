@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cprxwk4ubh836"]
+
+[ext_resource type="Texture2D" uid="uid://bho3qkcput1k5" path="res://graphics/objects/wall_lamp.png" id="1_bdqgl"]
+[ext_resource type="Texture2D" uid="uid://d04pwdx6ky4u7" path="res://graphics/lights/textures/circle.png" id="2_dbrxe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5yxgd"]
+radius = 74.5
+height = 828.0
+
+[node name="WallLamp" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -24)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5yxgd")
+
+[node name="WallLamp" type="Sprite2D" parent="."]
+position = Vector2(497, 133)
+texture = ExtResource("1_bdqgl")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(9, 3)
+energy = 7.0
+shadow_enabled = true
+texture = ExtResource("2_dbrxe")

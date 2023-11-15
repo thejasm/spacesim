@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://g5sartnrhvgk"]
+
+[ext_resource type="PackedScene" uid="uid://bklvyu57ao03q" path="res://scenes/Player/player.tscn" id="1_prjlu"]
+[ext_resource type="Script" path="res://scenes/Levels/level.gd" id="1_q27tr"]
+[ext_resource type="PackedScene" uid="uid://dede6033tapxj" path="res://scenes/Objects/bed.tscn" id="2_fnisw"]
+[ext_resource type="Texture2D" uid="uid://clw4l4bvo2nhr" path="res://graphics/tilesets/outside_walls.png" id="2_klpgt"]
+[ext_resource type="Texture2D" uid="uid://c7shvj3xlt2y8" path="res://graphics/tilesets/soil.png" id="3_smd1i"]
+[ext_resource type="PackedScene" uid="uid://deyxuccd57qdk" path="res://scenes/Objects/box.tscn" id="3_y0vjd"]
+[ext_resource type="PackedScene" uid="uid://bbtkitpkcmg8b" path="res://scenes/Objects/SmallHouse.tscn" id="4_snxev"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ql2j1"]
+resource_name = "walls"
+texture = ExtResource("2_klpgt")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cf8y8"]
+texture = ExtResource("3_smd1i")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dq6ty"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_ql2j1")
+sources/1 = SubResource("TileSetAtlasSource_cf8y8")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_q27tr")
+speed = null
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="OutdoorTilemap" type="TileMap" parent="Ground"]
+tile_set = SubResource("TileSet_dq6ty")
+format = 2
+layer_0/name = "Soil"
+layer_1/name = "Walls"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(131070, 0, 2, 65534, 0, 2, -2, 0, 1, 131072, 131072, 0, 196607, 65536, 0, 196606, 65536, 2)
+
+[node name="Building" parent="Ground" instance=ExtResource("4_snxev")]
+position = Vector2(-80, -1472)
+rotation = 0.23911
+
+[node name="Bed" parent="Ground/Building" instance=ExtResource("2_fnisw")]
+position = Vector2(824, 715)
+
+[node name="Player" parent="." instance=ExtResource("1_prjlu")]
+position = Vector2(426, 282)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="StaticBody2D" parent="Decorations" instance=ExtResource("3_y0vjd")]
+position = Vector2(136, 549)
+rotation = 0.598648
+scale = Vector2(0.7, 0.7)
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[connection signal="firing" from="Player" to="." method="_on_player_firing"]
+[connection signal="throw_grenade" from="Player" to="." method="_on_player_throw_grenade"]

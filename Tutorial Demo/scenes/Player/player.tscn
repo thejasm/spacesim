@@ -1,13 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://bklvyu57ao03q"]
+[gd_scene load_steps=10 format=3 uid="uid://bklvyu57ao03q"]
 
 [ext_resource type="Texture2D" uid="uid://2n5mfldwcme8" path="res://graphics/player/player.png" id="1_45gm2"]
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_legjd"]
+[ext_resource type="Texture2D" uid="uid://d04pwdx6ky4u7" path="res://graphics/lights/textures/circle.png" id="2_ii4km"]
+
+[sub_resource type="Gradient" id="Gradient_aghdx"]
+colors = PackedColorArray(0.301961, 0.639216, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8rta1"]
+gradient = SubResource("Gradient_aghdx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lxc3e"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 5.0
+scale_max = 12.0
+color_ramp = SubResource("GradientTexture1D_8rta1")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vds43"]
 radius = 60.0083
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_axmv1"]
+polygon = PackedVector2Array(-186, -17, -186, -30, -186, -40, -181, -47, -179, -50, -176, -59, -170, -64, -159, -66, -156, -65, -153, -66, -154, -70, -147, -74, -140, -76, -138, -76, -138, -73, -131, -78, -125, -79, -118, -79, -114, -77, -110, -80, -103, -80, -96, -77, -92, -72, -90, -67, -89, -63, -88, -59, -87, -55, -87, -49, -91, -45, -98, -40, -106, -34, -106, -31, -105, -25, -105, -20, -106, -15, -110, -11, -111, -7, -115, -2, -116, 2, -118, 5, -116, 8, -117, 14, -121, 20, -122, 26, -126, 31, -130, 37, -135, 41, -142, 41, -149, 40, -153, 39, -159, 36, -162, 31, -164, 25, -168, 19, -169, 14, -173, 11, -176, 6, -178, 0, -176, -2, -178, -4, -180, -6, -183, -9, -185, -13)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dg5bd"]
+polygon = PackedVector2Array(2, -13, 4, -12, 6, -10, 7, -7, 7, 5, 6, 9, 5, 11, 3, 13, -1, 13, -2, 12, -3, 11, -5, 12, -5, 13, -4, 15, -4, 17, -8, 17, -12, 17, -12, -17, -3, -17, -2, -16, -2, -14, -4, -12, -3, -11, -1, -11)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_legjd")
+
+[node name="muzzleFlash" type="GPUParticles2D" parent="."]
+position = Vector2(129, 22)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_lxc3e")
+lifetime = 0.1
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="muzzleFlash"]
+visible = false
+position = Vector2(10.44, 0)
+scale = Vector2(2, 2)
+color = Color(0.356863, 0.847059, 1, 1)
+energy = 10.0
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 3
+texture = ExtResource("2_ii4km")
+
+[node name="MuzzleFlashTimer" type="Timer" parent="muzzleFlash"]
+wait_time = 0.02
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(40, 3)
@@ -27,5 +74,17 @@ wait_time = 2.0
 [node name="barrel" type="Marker2D" parent="."]
 position = Vector2(129, 22)
 
+[node name="BodyOccluder" type="LightOccluder2D" parent="."]
+position = Vector2(129, 22)
+occluder = SubResource("OccluderPolygon2D_axmv1")
+
+[node name="GunOccluder" type="LightOccluder2D" parent="BodyOccluder"]
+visible = false
+modulate = Color(1, 1, 1, 0.313726)
+self_modulate = Color(1, 1, 1, 0.113725)
+occluder = SubResource("OccluderPolygon2D_dg5bd")
+occluder_light_mask = 2
+
+[connection signal="timeout" from="muzzleFlash/MuzzleFlashTimer" to="." method="_on_muzzle_flash_timer_timeout"]
 [connection signal="timeout" from="PrimaryFirerate" to="." method="_on_primary_firerate_timeout"]
 [connection signal="timeout" from="SecondaryTimer" to="." method="_on_secondary_timer_timeout"]
