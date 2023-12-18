@@ -11,14 +11,11 @@
             "id": "8b23a61120ac5ec3",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Mind Map.canvas",
-                "viewState": {
-                  "x": 1551.8287231507977,
-                  "y": 925.8502963645157,
-                  "zoom": 1
-                }
+                "file": "Tech notes/Addons.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Mind Map.canvas",
+                "file": "Tech notes/Addons.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Mind Map.canvas",
+                "file": "Tech notes/Addons.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Mind Map.canvas"
+                "file": "Tech notes/Addons.md"
               }
             }
           }
@@ -151,9 +148,12 @@
   },
   "active": "8b23a61120ac5ec3",
   "lastOpenFiles": [
+    "Mind Map.canvas",
+    "Tech notes/Addons.md",
+    "Tech notes",
     "Space Sim Design Document.md",
+    "Black Skylands Notes/Black Skylands Notes.md",
     "Image Board/Pasted image 20230826195849.png.import",
-    "Black Skylands Notes/Pasted image 20230826192302.png.import",
-    "Mind Map.canvas"
+    "Black Skylands Notes/Pasted image 20230826192302.png.import"
   ]
 }

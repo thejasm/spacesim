@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Tutorial Demo"
-run/main_scene="res://scenes/Levels/level.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+run/main_scene="res://scenes/Levels/Outside.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://scenes/Globals.gd"
 
 [display]
 

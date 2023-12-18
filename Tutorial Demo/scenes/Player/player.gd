@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var maxSpeed = 400
+var speed = maxSpeed
 @export var firerate = 0.1
 @export var secondaryTimer = 2
 
@@ -31,7 +32,8 @@ func _process(delta):
 	# Primary and Secondary Action
 	var dir = Vector2(cos(rotation), sin(rotation))
 	
-	if(can_primary == true && Input.is_action_pressed("PrimaryAction")):
+	if(can_primary == true && Input.is_action_pressed("PrimaryAction") && Globals.clip_size > 0):
+		Globals.clip_size -= 1
 		firing.emit($barrel.global_position, dir)
 		can_primary = false
 		$PrimaryFirerate.start()
@@ -45,7 +47,8 @@ func _process(delta):
 		$muzzleFlash.one_shot = true
 		$muzzleFlash/PointLight2D.visible = false
 		
-	if(can_secondary == true && Input.is_action_pressed("Secondary Action")):
+	if(can_secondary == true && Input.is_action_pressed("Secondary Action") && Globals.grenade_count > 0):
+		Globals.grenade_count -= 1
 		throw_grenade.emit(global_position, dir)
 		can_secondary = false
 		$SecondaryTimer.start()

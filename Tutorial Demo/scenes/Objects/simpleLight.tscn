@@ -12,6 +12,8 @@ cull_mode = 2
 polygon = PackedVector2Array(-87, -16, 87, -16, 87, 16, 76, 17, 76, -3, 73, -5, -74, -4, -76, -1, -76, 18, -88, 17)
 
 [node name="SimpleLight" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 15
 
 [node name="Light" type="Sprite2D" parent="."]
 texture = ExtResource("1_pxtrn")

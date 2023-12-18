@@ -1,10 +1,11 @@
 extends Node2D
+class_name LevelParent
 
 var bullet_scene: PackedScene = preload("res://scenes/Projectiles/bullet.tscn")
 var grenade_scene: PackedScene = preload("res://scenes/Projectiles/grenade.tscn")
 
 @export var speed = 100
-@export var throw_speed = 1000
+@export var throw_speed = 2000
 
 
 
@@ -41,6 +42,9 @@ func _on_player_firing(pos, dir):
 	
 	#camera shake
 	$Player/Camera2D.offset += Vector2(randf_range(-15, 15), randf_range(-15, 15))
+	
+	#update ammo counter
+	$HUD.ammo_count_update()
 
 
 func _on_player_throw_grenade(pos, dir):
@@ -48,3 +52,16 @@ func _on_player_throw_grenade(pos, dir):
 	thrown_grenade.position = pos
 	thrown_grenade.linear_velocity = dir * throw_speed
 	$Projectiles.add_child(thrown_grenade)
+	
+	#update grenade counter
+	$HUD.grenade_count_update()
+
+
+func _on_building_player_entered():
+	var tween = get_tree().create_tween()
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.7,0.7), 1)
+
+
+func _on_building_player_exited():
+	var tween = get_tree().create_tween() 
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.3,0.3), 1)
